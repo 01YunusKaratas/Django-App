@@ -19,9 +19,10 @@ def Register(request):
             newuser =User(username=username)
             newuser.set_password(password)
             newuser.save()
-
+                
             login(request,newuser)
             messages.success(request , "Registration succesfull...")
+             logout(request)
 
             return redirect("index")
         context = {
