@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  -LOGIN-
+{% endblock %}
+
+
+{% block body %}
+
+
+
+        <br> <br>  <br>
+        <h3><i><b>LOGIN</b></i></h3>
+        <hr>
+      <form method="post">
+
+    {% csrf_token %}
+        <br>
+    {{ form.as_p}} <!--formu çağırmak için bu kodu kullanıyoruz. -->
+
+        <br>
+
+    <button type="submit" class="btn btn-success"> LOGIN</button>
+
+    </form>
+
+
+    <hr>
+
+
+    <style>
+    .center {
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+    <div class="center">
+
+    <img src="https://ps.w.org/login-customizer/assets/icon-256x256.png?rev=2455454" alt="giriş.jpg" height="200" width="210">
+  </div>
+
+
+
+
+
+
+
+{% endblock %}

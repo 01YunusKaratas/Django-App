@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block title %}
+    Add-Article
+{% endblock %}
+
+{% block body %}
+
+    <br> <br> <br>
+    <h3>AddArticle</h3>
+    <hr>
+
+    <form method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+    {{ form.as_p }}
+     {{ form.media }}
+
+    <button type="submit" class="btn btn-danger">Artıcle-Save</button>
+    </form>
+
+{% endblock %}

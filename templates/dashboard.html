@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Dashboard
+{% endblock %}
+
+{% block body %}
+    <br> <br>
+    <H3>Dashboard</H3>
+    <hr>
+    
+    <P>
+
+    Hoşgeldiniz ,<small> {{ request.user.username }}</small>
+
+    </P>
+
+    {% csrf_token %}
+
+    {% if articles %}
+
+    <table class="table">
+
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">TİTLE</th>
+      <th scope="col">CREATED-DATE</th>
+      <th scope="col">AUTHOR</th>
+        <th scope="col">UPDATE</th>
+        <th scope="col">DELETE</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for article in articles %}
+      <tr>
+          <th scope="row"> {{ article.id}}</th>
+            <td><a href="{% url 'article:dashboard' %}{{ article.id }}">{{ article.title }}</a></td>
+            <td>{{ article.created_date }}</td>
+            <td>{{ article.author }}</td>
+            <td><a href="{% url 'article:update' article.id%}" class="btn btn-danger">UPDATE</a></td>
+            <td><a href="{% url 'article:delete' article.id%}"class="btn btn-danger">DELETE</a></td>
+            <!--artile ıd yi direk yanına yazarak hallediyoz. -->
+      </tr>
+    
+    {% endfor %}
+    
+
+
+
+  </tbody>
+
+
+</table>
+    {% else %}
+    <p class="alert alert-danger">
+        There is not a article
+    </p>
+    {% endif %}
+
+
+
+
+
+
+        <a class="btn btn-danger" href="/yunusemre/article/addarticle/"> Add-Artıcle</a>
+    <hr>
+
+
+
+
+
+
+
+
+{% endblock %}

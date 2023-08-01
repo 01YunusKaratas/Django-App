@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MY PAGE</title>
+</head>
+<body>
+    {% csrf_token %}
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="{% url 'index' %}">MY BLOG</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            {% if request.user.is_authenticated %}
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'article:about' %}"><b>About Me</b></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'article:makaleler' %}"><b>Articles</b></a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto"> <!-- ml-auto class added -->
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'article:dashboard' %}"><b>Dashboard</b></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'user:logout' %}"><b>Logout</b></a>
+                    </li>
+                </ul>
+            {% else %}
+                <ul class="navbar-nav ml-auto"> <!-- ml-auto class added -->
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'user:login' %}"><b>Login</b></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'user: register' %}"><b>Register</b></a>
+                    </li>
+                </ul>
+            {% endif %}
+        </div>
+    </nav>
+</body>
+</html>

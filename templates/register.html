@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  -REGISTER-
+{% endblock %}
+
+{% block body %}
+    <br> <br>  <br>
+    <h3><i><b>REGISTER</b></i></h3>
+    <hr>
+
+    <form method="post">
+       {% csrf_token %}  <!-- bu kod satırı man in the middlee attack tan korumayayı sağlıyor-->
+
+        {{ form.as_p }}  <!--Djangoda formları göstermek için form.as_p yi yapmak lazım -->
+        <br>
+        <button type="submit" class="btn btn-danger">Save</button>
+
+    </form>
+    <hr>
+    <style>
+    .center {
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+    <div class="center">
+
+    <img src="https://st.depositphotos.com/1008768/3377/i/950/depositphotos_33777219-stock-photo-register-here-sign.jpg" height="200" width="210">
+  </div>
+
+
+{% endblock %}

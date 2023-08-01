@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{% block title %}
+    Article
+{% endblock title %}
+
+{% block body %}
+    <br>
+    <h3><i><m>ARTICLE's</m></i></h3>
+    <hr>
+
+    {% csrf_token %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Author</th>
+                <th scope="col">Content</th>
+                <th scope="col"> </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if article %}
+                {% for articles in article %}
+                    <tr>
+                        <td><a href="/yunusemre/dashboard/{{ articles.id }}">{{ articles.title }}</a></td>
+                        <td><a href="/yunusemre/dashboard/{{ articles.id }}">{{ articles.author }}</a></td>
+                        <td><a href="/yunusemre/dashboard/{{ articles.id }}">{{ articles.content|safe|truncatewords:5}}</a></td>
+                        <td style="float: right"><a href="/yunusemre/dashboard/{{ articles.id }}" class="btn btn-danger">Devamını Oku...</a></td>
+                    
+                    </tr>
+
+                {% endfor %}
+
+            {% else %}
+               
+                    <div class="alert alert-danger"> <p>There are no articles</p></div>
+                
+            {% endif %}
+
+            <form>
+             {% csrf_token %}
+                {% if article %}
+                     <input type="text" name="keyword" class="input-sm">
+                     <button type="submit" class="btn btn-danger">Ara</button>
+                {% else %}
+                    <a href="/yunusemre/makaleler/" class="btn btn-danger">Turn Back ARTİCLE's</a>
+
+                {% endif %}
+
+
+            </form>
+        </tbody>
+    </table>
+{% endblock body %}

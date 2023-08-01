@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {% if article %}
+        {{ article.id }}
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    {% if article %}
+        <br> <br>
+        <h3><b>{{ article.id}}</b></h3>
+        <hr>
+        TİTLE: <i><b>{{ article.title }}</b></i>
+        <hr>
+        AUTHOR : <i><b>{{ article.author }}</b></i>
+        <hr>
+        DATE   : <i><b>{{ article.created_date }}</b></i>
+        <hr>
+        CONTENT : <i><b> {{ article.content |safe }} </b></i>  <!--Bizim burda safe kullanma nedenimiz html içerikleriidüzgün gösterme -->
+        <hr>
+        <i><b>Image:</b></i>
+        {% if article.article_image%}
+            <div>
+
+            <img src="{{ article.article_image.url }}" alt="Article.jpg" width="250" height="250" >
+
+            </div>
+        {% else %}
+           <p>NO photo variable</p>
+        {% endif %} 
+
+    {% else %}
+        <br>
+        <div class="alert alert-danger">
+           No article found for this ID.
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,11 @@
+p{
+    background: red;
+
+}
+
+body{
+
+    background-image: url("https://media.geeksforgeeks.org/wp-content/cdn-uploads/20210917204112/Top-10-Advance-Python-Concepts-That-You-Must-Know.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
